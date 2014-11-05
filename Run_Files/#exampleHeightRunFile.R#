@@ -1,0 +1,25 @@
+setwd("..")
+source ( "Scripts/CreateTraitFile.R")
+#source ( "Scripts/functions.R")
+source ( "Scripts/functions_modified.R")
+#CreateTraitFile ( "Trait_Data/FilesForPaper/height.txt" , "Genome_Data/HapMapInHGDP_PositionsAndBValues")
+#RemoveSNPs ( "Trait_Data/FilesForPaper/height.txt" , "Trait_Data/FilesForPaper/height.HapMapInHGDP_PositionsAndBValues.freqs" , "Trait_Data/FilesForPaper/newheight.txt" )
+options ( error = recover)
+
+PolygenicAdaptationFunction (
+				gwas.data.file = "Trait_Data/gwas.data.file.heightBoth.txt" ,
+				freqs.file = "Trait_Data/freqs.file.txt" ,
+				env.var.data.files = list ( "EnvVar/Environment.txt") ,
+							match.pop.file = "Genome_Data/match.pop.file.txt" ,
+							full.dataset.file = "Genome_Data/full.dataset.file.txt" ,
+							path = "OUT" ,
+							match.categories = c ( "FRQ") ,
+							match.bins = list ( seq ( 0 , 1 , 0.02 ) ) ,
+							cov.SNPs.per.cycle = 5000 ,
+							cov.cycles = 4 ,
+							null.phenos.per.cycle = 1000 ,
+							null.cycles = 10 ,
+							load.cov.mat = T ,
+							sim.null = T ,
+							check.allele.orientation = F
+							)
